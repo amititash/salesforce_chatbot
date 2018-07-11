@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <title>Chat</title>
+    </head>
+    <body style="height: 100%;">
+        <div style="background: linear-gradient(270deg,#5c258d,#4389a2 );position: absolute;height: 100%;width: 100%;">
+            <div class="chat" style="position: relative;height: 100%;width: 100%;">
+                <ul id="messages" style="list-style-type: none; overflow-x: hidden; margin: 1%; border-radius: 10px; overflow-y: scroll; position: absolute; height: 93%; width: 99%; padding-left: 0px; right: 0px; left: 0px;"></ul>
+                <form id="form" action="" style="position: absolute;bottom: 0px;padding: 0.5%;height: 4%;width: 100%;background: transparent;">
+                    <input type="text" id="text-input" autocomplete="off" style="width: 90%" class="input-sm">
+                    <button class="btn btn-sm btn-primary" style="width: 9%; background-color: #4389a2; border: 1px; align-items: center">Send</button>
+                </form>
+            </div>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
+        <script src="clientSide.js"></script>
+    </body>
+</html>
