@@ -90,8 +90,9 @@ const store = new Store({
 
         request(options, function (error, response, body) {
           if (error){ throw new Error(error)}
-          console.log("response:-", response);
-          console.log("body:-",body);
+            if(response) { 
+                createWindow() 
+            }
         });    
       })
   }
