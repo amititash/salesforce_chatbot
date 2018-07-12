@@ -1,6 +1,7 @@
 const {app, BrowserWindow } = require('electron')
 const electronOauth2 = require('electron-oauth2');
 const Store = require('./store.js');
+// const {session} = require('electron')
 
 var config = {
     clientId: '3MVG9zlTNB8o8BA2DpqdcSqAZTFsacICrYjiufsF1uihjjori6KCXudpBoPzKHf0wHtolQeecRv.A06yD1ReA',
@@ -33,6 +34,7 @@ const store = new Store({
   }
   
   app.on('ready', () => {
+    console.log("Token:-",store.get('token'))
     const windowParams = {
       alwaysOnTop: true,
       autoHideMenuBar: true,
@@ -44,7 +46,7 @@ const store = new Store({
       openSalesForceLogin(windowParams);
     } else {
       createWindow();
-    }
+     }
   })
 
   
@@ -75,7 +77,6 @@ const store = new Store({
 
         store.set('token', token);
         console.log("Token:-", store.get('token'));
-
       }).then(()=>{
         var request = require("request");
         var token = store.get('token');
@@ -90,8 +91,11 @@ const store = new Store({
 
         request(options, function (error, response, body) {
           if (error){ throw new Error(error)}
-          console.log("response:-", response);
-          console.log("body:-",body);
+          // console.log("response:-", response);
+          if(response) { 
+            createWindow() 
+          }
+          // console.log("body:-",body);
         });    
       })
   }
