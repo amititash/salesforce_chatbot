@@ -40,11 +40,11 @@ const store = new Store({
           nodeIntegration: false
       }
     }
-    // if(store.get('token') == null){
-    //   openSalesForceLogin(windowParams);
-    // } else {
+    if(store.get('token') == null){
+      openSalesForceLogin(windowParams);
+    } else {
       createWindow();
-    //  }
+     }
   })
 
   
