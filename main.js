@@ -88,9 +88,16 @@ const store = new Store({
 
         request(options, function (error, response, body) {
           if (error){ throw new Error(error)}
+<<<<<<< HEAD
           if(response) { 
             createWindow() 
           }
         });      
+=======
+            if(response) { 
+                createWindow() 
+            }
+        });    
+>>>>>>> b8112dbe9dcf543afcb6e44f04527ca34ada66b0
       })
   }
