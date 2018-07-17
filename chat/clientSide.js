@@ -11,12 +11,7 @@ http.listen(3000, function(){
   console.log('Server is ready and listening on 3000');
   setTimeout(()=>{
     messages.insertAdjacentHTML('beforeend',
-          `<li style="background: #FFF;
-          width: 50%;
-          border-radius:10px;
-          margin: 0.5%;
-          float:left;
-          padding: 1%;"><img src="../img/bot.png" style="width:30px; height:30px; margin-right:10px;"/>Hello I'm Chatbot</li>`);
+          `<li id="bot-message"><img src="../img/bot.png" style="width:30px; height:30px; margin-right:10px;"/>Hello I'm Chatbot</li>`);
   }, 1000);
 });
 
@@ -26,12 +21,7 @@ form.onsubmit = function(event) {
     return;
   }
   messages.insertAdjacentHTML('beforeend',
-    `<li style="background: #FFF;
-        width: 50%;
-        border-radius:10px;
-        float:right;
-        margin:5px;
-        padding: 1%;"><img src="../img/user.png" style="width:30px; height:30px; margin-right:10px;"/>${textInput.value}</li>`);
+    `<li id="client-message"><img src="../img/user.png" style="width:30px; height:30px; margin-right:10px;"/>${textInput.value}</li>`);
   const update = {
     message: {
       text: textInput.value
@@ -51,12 +41,7 @@ io.on('connection', function(socket) {
       console.log('Got a new message from client', data.message.text);
 
         messages.insertAdjacentHTML('beforeend',
-          `<li style="background: #FFF;
-          width: 50%;
-          border-radius:10px;
-          margin: 5px;
-          float:left;
-          padding: 1%;"><img src="../img/bot.png" style="width:30px; height:30px; margin-right:10px;"/>${serverResponse()}</li>`);
+          `<li id="bot-message"><img src="../img/bot.png" style="width:30px; height:30px; margin-right:10px;"/>${serverResponse()}</li>`);
         });
 });
 

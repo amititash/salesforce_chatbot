@@ -1,0 +1,70 @@
+#mainDiv {
+    background: linear-gradient(270deg,#5c258d,#4389a2 );
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.chat {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+#messages{
+    list-style-type: none; 
+    bottom: 5%; 
+    overflow-x: hidden; 
+    margin: 1%; 
+    overflow-y: auto; 
+    position: absolute; 
+    width: 98%; 
+    max-height: 93%; 
+    padding-left: 0px; 
+}
+
+#form{
+    position: absolute;
+    bottom: 0px;
+    padding: 0.5%;
+    height: 4%;
+    width: 100%;
+    background: transparent;
+}
+
+#text-input{
+    width: 90%; 
+    border-radius:50px;
+    height: 35px;
+    font-size: 16px;
+    border: none;
+}
+
+#btn{
+    width: 9%; 
+    background-color: #4389a2; 
+    border: 1px;
+    height: 35px;
+    border-radius: 50px; 
+    align-items: center
+}
+
+#client-message{
+    background: #FFF;
+    width: 50%;
+    border-radius:10px;
+    float:right;
+    bottom:0px;
+    margin:5px;
+    padding: 1%;
+}
+
+#bot-message{
+    background: #FFF;
+    width: 50%;
+    border-radius:10px;
+    margin: 0.5%;
+    bottom:0px;
+    float:left;
+    padding: 1%;
+}

@@ -21,7 +21,7 @@ const store = new Store({
   let win
   
   function createWindow () {
-    win = new BrowserWindow({width: 800, height: 600})
+    win = new BrowserWindow({width: 700, height: 700, resizable: false})
     win.loadFile('chat/index.html')
     // win.webContents.openDevTools()
     win.on('closed', () => {
