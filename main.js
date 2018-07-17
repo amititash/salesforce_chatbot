@@ -22,11 +22,8 @@ const store = new Store({
   
   function createWindow () {
     win = new BrowserWindow({width: 800, height: 600})
-  
     win.loadFile('chat/index.html')
-  
     // win.webContents.openDevTools()
-  
     win.on('closed', () => {
       win = null
     })
@@ -40,11 +37,11 @@ const store = new Store({
           nodeIntegration: false
       }
     }
-    if(store.get('token') == null){
-      openSalesForceLogin(windowParams);
-    } else {
+    // if(store.get('token') == null){
+    //   openSalesForceLogin(windowParams);
+    // } else {
       createWindow();
-     }
+    //  }
   })
 
   
@@ -55,9 +52,7 @@ const store = new Store({
   })
   
   app.on('activate', () => {
-    
     if (win === null) {
-      
       createWindow()
     }
   })
