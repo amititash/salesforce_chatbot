@@ -41,7 +41,7 @@ form.onsubmit = function(event) {
     socket.emit('response',update);
   },1000);
   
-  messages.scrollTop = messages.scrollHeight;
+  messages.scrollTo(0,document.body.scrollHeight);
   textInput.value = '';
 };
 
