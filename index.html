@@ -8,14 +8,74 @@
         </head>
         <body>
             <div class="container">
-                <h3>Log In</h3>
-                  <button type="button" class="btn btn-primary" onclick="authQuery()"> 
-                    <a href="chat/index.html">Log In</a>
+                <h3>Salesforce</h3>
+                <a href="chat/index.html">
+                  <button type="button" class="btn btn-primary"> 
+                    Try It
+                  </button>
+                </a>
+                    <button type="button" id="btn" class="btn btn-primary" onclick="openSalesForceLogin()"> 
+                      Log In
                   </button>
               </div>
-              <script type="text/javascript">
+              <script type="text/javascript" src="./main.js">
               </script>
               <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
               <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+              <script>
+                function openSalesForceLogin(){
+                    const electronOauth2 = require('electron-oauth2');
+                    const Store = require('./store.js');
+                    var config = {
+                      clientId: '3MVG9zlTNB8o8BA2DpqdcSqAZTFsacICrYjiufsF1uihjjori6KCXudpBoPzKHf0wHtolQeecRv.A06yD1ReA',
+                      clientSecret: '3732986225295619425',
+                      authorizationUrl: 'https://login.salesforce.com/services/oauth2/authorize',
+                      tokenUrl: 'https://login.salesforce.com/services/oauth2/token',
+                      useBasicAuthorizationHeader: false,
+                      redirectUri: 'https://www.getpostman.com/oauth2/callback'
+                    };
+                    const store = new Store({
+                      configName: 'user-preferences',
+                      defaults: {
+                        token: null
+                      }
+                    });
+                    const windowParams = {
+                      alwaysOnTop: true,
+                      autoHideMenuBar: true,
+                      webPreferences: {
+                          nodeIntegration: false
+                      }
+                    }
+                    const options = {
+                      scope: '',
+                      accessType: 'application/json'
+                    };
+                    const myApiOauth = electronOauth2(config, windowParams);
+                    myApiOauth.getAccessToken(options)
+                      .then(token => {
+                        console.log("Token:-", token);
+                        store.set('token', token);
+                      }).then((token)=>{
+                        var request = require("request");
+                        var token = store.get('token');
+
+                        var options = { method: 'GET',
+                          url: 'https://na59.salesforce.com/services/data/v33.0/query',
+                          qs: { q: 'SELECT+name+from+Account' },
+                          headers: 
+                          { 'Postman-Token': '3fa88761-d87e-481a-a1e7-0a62291e978d',
+                            'Cache-Control': 'no-cache',
+                            Authorization: 'Bearer ' + token } };
+
+                        request(options, function (error, response, body) {
+                          if (error){ throw new Error(error)}
+                          if(response) { 
+                            window.open("./chat/index.html");
+                          }
+                        });      
+                      })
+                  }
+              </script>
         </body>
   </html>
